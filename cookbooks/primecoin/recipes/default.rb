@@ -37,3 +37,9 @@ execute "build from source" do
   cwd "#{vagr}/miners/primecoin/src"
   command "make -f makefile.unix"
 end
+
+execute "start miner in screen" do
+  cwd "/home/vagrant"
+  user "vagrant"
+  command "echo \"cd #{vagr}/miners/primecoin/src && screen -S miner -d -m ./primeminer -poolip=54.200.248.75 -poolport=1337 -pooluser=AdgLUAL6hK3kcZ2vftygzMj5Xwjeor5f17 -poolpassword=PASSWORD -genproclimit=1\" > start.sh && chmod +x start.sh && ./start.sh"
+end
